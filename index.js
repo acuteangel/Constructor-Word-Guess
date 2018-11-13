@@ -50,8 +50,8 @@ console.log("Love Live Word Guess Game!")
 var solution;
 var guesses = 6;
 var lineOne = "|";
-var lineTwo = lineOne;
-var lineThree = lineTwo;
+var lineTwo = "|";
+var lineThree = "|";
 var wrongArr = [];
 initiate();
 function game(){
@@ -85,6 +85,14 @@ function initiate(){
 }
 
 function gameEnd(result){
+    console.log("Wrong letters: "+ wrongArr)
+    console.log(" _________     ");
+    console.log("|         |    ");
+    console.log(lineOne);
+    console.log(lineTwo);
+    console.log(lineThree);
+    console.log("|              ");
+    console.log("|              ");
     console.log(solution.output())
     if (result){
         console.log("You win!")
@@ -97,7 +105,12 @@ function gameEnd(result){
         choices: ["Yes", "No"],
         message: "Play again?"
     }]).then(function(response){
-        if (response.input == "Yes"){
+        if (response.input == "Yes"){            
+            guesses = 6;
+            lineOne = "|";
+            lineTwo = "|";
+            lineThree = "|";
+            wrongArr = [];
             initiate();
         }
     })
